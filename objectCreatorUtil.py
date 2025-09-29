@@ -1,10 +1,6 @@
-# objectCreatorUtil.py
 from maya import cmds
 
 def createObject(obj_type, name=None):
-    """
-    สร้างวัตถุใน Maya ตาม obj_type
-    """
     obj = None
     if obj_type == "cube":
         obj = cmds.polyCube(name=name or "pCube#")[0]

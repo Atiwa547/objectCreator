@@ -1,4 +1,3 @@
-# objectCreatorUi.py
 try:
     from PySide2 import QtCore, QtGui, QtWidgets
     from shiboken2 import wrapInstance
@@ -21,10 +20,8 @@ class ObjectCreatorDialog(QtWidgets.QDialog):
         self.resize(300, 350)
         self.setWindowTitle('🗿 Object Creator')
 
-        # ---------------- Layout ----------------
         self.main_layout = QtWidgets.QVBoxLayout(self)
 
-        # List Widget
         self.object_listWidget = QtWidgets.QListWidget()
         self.object_listWidget.setIconSize(QtCore.QSize(60, 60))
         self.object_listWidget.setSpacing(5)
@@ -33,7 +30,6 @@ class ObjectCreatorDialog(QtWidgets.QDialog):
         self.object_listWidget.setResizeMode(QtWidgets.QListView.Adjust)
         self.main_layout.addWidget(self.object_listWidget)
 
-        # Name input
         self.name_layout = QtWidgets.QHBoxLayout()
         self.main_layout.addLayout(self.name_layout)
 
@@ -55,7 +51,6 @@ class ObjectCreatorDialog(QtWidgets.QDialog):
         self.name_layout.addWidget(self.name_label)
         self.name_layout.addWidget(self.name_lineEdit)
 
-        # Buttons
         self.button_layout = QtWidgets.QHBoxLayout()
         self.main_layout.addLayout(self.button_layout)
 
@@ -78,10 +73,8 @@ class ObjectCreatorDialog(QtWidgets.QDialog):
         self.button_layout.addWidget(self.create_button)
         self.button_layout.addWidget(self.cancel_button)
 
-        # ---------------- Init ----------------
         self.initIconWidget()
 
-        # ---------------- Connect ----------------
         self.create_button.clicked.connect(self.createObject)
         self.cancel_button.clicked.connect(self.close)
 
@@ -104,12 +97,9 @@ class ObjectCreatorDialog(QtWidgets.QDialog):
         obj_name = self.name_lineEdit.text().strip() or None
 
         result = util.createObject(obj_type, obj_name)
-        print(f"Created: {result}")  # แสดงใน script editor ของ Maya
+        print(f"Created: {result}")  
 
-        # reset ช่องกรอกชื่อ
         self.name_lineEdit.clear()
-        # (ไม่ปิดหน้าต่าง)
-
 
 def run():
     global ui
